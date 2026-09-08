@@ -1,0 +1,42 @@
+---
+import Brand from './Brand.astro';
+import MobileMenu from './MobileMenu';
+import { navigation } from '../config/site';
+---
+
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <Brand />
+
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      {
+        navigation.map((item) => (
+          <a href={item.href} data-i18n data-en={item.en}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="site-header__actions">
+      <div class="lang-switch" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="header-cta" href="/#kontakt">
+        <span data-i18n data-en="Get in touch">Kontakt aufnehmen</span>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"></path></svg
+        >
+      </a>
+    </div>
+
+    <MobileMenu client:load />
+  </div>
+</header>

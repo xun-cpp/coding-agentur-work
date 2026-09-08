@@ -1,0 +1,77 @@
+---
+import I18n from '../I18n.astro';
+---
+
+<div class="product-stage" aria-label="Dreidimensionale Vorschau von Website, App und Zahlung" data-tilt>
+  <div class="stage-orbit stage-orbit--one" aria-hidden="true"></div>
+  <div class="stage-orbit stage-orbit--two" aria-hidden="true"></div>
+  <div class="stage-shadow" aria-hidden="true"></div>
+  <div class="stage-assembly" aria-hidden="true">
+    <div class="stage-computer">
+      <div class="stage-computer__display">
+        <div class="demo-chrome">
+          <span class="demo-chrome__dots"><i></i><i></i><i></i></span><span>ihre-website.de</span><span>↗</span>
+        </div>
+        <div class="studio-web">
+          <div class="studio-web__nav"><b>Ihre Website</b><span>Ihr Auftritt</span><span>☰</span></div>
+          <div class="studio-web__content">
+            <div>
+              <span class="studio-web__ey">IHRE WEBSITE</span><h3>
+                Gefunden.<br />Gebucht.<br /><em>Bezahlt.</em>
+              </h3><span class="studio-web__link">Termin buchen <span>↗</span></span>
+            </div>
+            <div class="studio-ui">
+              <div class="studio-ui__disk"></div>
+              <div class="studio-ui__pane">
+                <span>01 / DESIGN</span><b>Form.<br />Funktion.<br />Gefühl.</b><i>↗</i>
+              </div>
+              <div class="studio-ui__pill">Für Ihr Unternehmen <i>✦</i></div>
+            </div>
+          </div>
+          <div class="studio-web__bottom"><span>Individuell. Bis ins Detail.</span><span>01 — 03</span></div>
+        </div>
+      </div>
+      <div class="stage-computer__base"><i></i></div>
+    </div>
+    <div class="stage-phone">
+      <div class="stage-phone__screen">
+        <div class="stage-phone__status"><span>9:41</span><i></i><span>▮▮</span></div>
+        <div class="stage-phone__body">
+          <span class="stage-phone__ey">IHRE APP</span><h3>Ihr Tag.<br />Im Griff.</h3>
+          <div class="app-dates">
+            <span>MO<b>21</b></span><span>DI<b>22</b></span><span class="is-selected">MI<b>23</b></span><span
+              >DO<b>24</b></span
+            >
+          </div>
+          <div class="app-appointment">
+            <i></i><div><b>Design-Review</b><span>10:00 – 10:30</span></div><span>↗</span>
+          </div>
+          <div class="app-appointment app-appointment--soft">
+            <i></i><div><b>Alles im Blick</b><span>Ihr Kundenbereich</span></div>
+          </div>
+          <div class="app-progress"><span>Bereit für heute</span><b>✓</b><i></i></div>
+          <div class="app-dock"><span>⌂</span><span>▦</span><span>◉</span></div>
+        </div>
+        <div class="stage-phone__home"></div>
+      </div>
+    </div>
+    <div class="stage-code">
+      <div class="stage-code__bar"><i></i><span>crafted.cpp</span><span>⌘</span></div>
+      <pre><span class="code-purple">auto</span> idea = <span class="code-blue">create</span>();
+idea.<span class="code-blue">design</span>();
+idea.<span class="code-blue">build</span>();
+<span class="code-purple">return</span> <span class="code-cream">something_great</span>;</pre>
+      <div class="stage-code__bottom"><i></i> build complete <span>↗</span></div>
+    </div>
+    <div class="stage-payment">
+      <span class="stage-payment__symbol"
+        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+          ><path d="M6 9a6 6 0 0 1 0 6m4-10a12 12 0 0 1 0 14m4-18a19 19 0 0 1 0 22"></path></svg
+        ></span
+      >
+      <div><span>Kontaktlos bezahlt</span><b>12,40 € <i>✓</i></b></div>
+    </div>
+    <span class="stage-label stage-label--web">WEB</span><span class="stage-label stage-label--app">APP</span>
+  </div>
+  <div class="stage-note"><span></span><I18n de="Für Ihren nächsten Schritt." en="Made for your next step." /></div>
+</div>

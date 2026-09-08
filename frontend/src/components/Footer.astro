@@ -1,0 +1,219 @@
+---
+import Brand from './Brand.astro';
+import CookieSettingsButton from './CookieSettingsButton';
+import I18n from './I18n.astro';
+import { site } from '../config/site';
+import { locations } from '../config/locations';
+const year = new Date().getFullYear();
+const footerCities = locations.slice(0, 4);
+---
+
+<footer class="site-footer">
+  <div class="shell hmf">
+    <div class="hmf__top">
+      <div class="hmf__brand">
+        <Brand />
+        <p>
+          <I18n
+            de="Individuelle Softwareentwicklung – von der ersten Idee bis zum laufenden Betrieb."
+            en="Custom software development – from first idea to running operations."
+          />
+        </p>
+      </div>
+
+      <nav class="hmf__col" aria-label="Leistungen">
+        <h4><I18n de="Leistungen" en="Services" /></h4>
+        <a href="/websites/">Websites</a>
+        <a href="/apps/"><I18n de="Mobile Apps" en="Mobile apps" /></a>
+        <a href="/kassensysteme/"><I18n de="Kassensysteme" en="POS systems" /></a>
+        <a href="/web-apps/"><I18n de="Individuelle Software" en="Custom software" /></a>
+        <a href="/integrationen/"><I18n de="APIs & Schnittstellen" en="APIs & integrations" /></a>
+      </nav>
+
+      <nav class="hmf__col" aria-label="Standorte">
+        <h4><I18n de="Standorte" en="Locations" /></h4>
+        {footerCities.map((city) => <a href={`/webdesign/${city.slug}/`}>{city.city}</a>)}
+        <a href="/webdesign/"><I18n de="Alle Standorte" en="All locations" /></a>
+      </nav>
+
+      <nav class="hmf__col" aria-label="Unternehmen">
+        <h4><I18n de="Unternehmen" en="Company" /></h4>
+        <a href="/ueber-uns/"><I18n de="Über uns" en="About us" /></a>
+        <a href="/#ablauf"><I18n de="Ablauf" en="Process" /></a>
+        <a href="/security/"><I18n de="Sicherheit" en="Security" /></a>
+        <a href="/service/"><I18n de="Service & Pflege" en="Service & care" /></a>
+        <a href="/kontakt/"><I18n de="Kontakt" en="Contact" /></a>
+      </nav>
+
+      <div class="hmf__contact">
+        <h4><I18n de="Kontakt" en="Contact" /></h4>
+        <a href={`mailto:${site.contactEmail}`}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+            ><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 6 8 6 8-6"></path></svg
+          >
+          {site.contactEmail}
+        </a>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+            ><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"></path><circle cx="12" cy="10" r="2.5"
+            ></circle></svg
+          >
+          {site.location}
+        </span>
+      </div>
+    </div>
+
+    <div class="hmf__bottom">
+      <span>© {year} {site.name}. <I18n de="Alle Rechte vorbehalten." en="All rights reserved." /></span>
+      <span class="hmf__legal">
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+        <CookieSettingsButton client:load />
+      </span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .hmf {
+    padding-block: clamp(44px, 6vw, 68px) clamp(18px, 3vw, 26px);
+  }
+  .hmf__top {
+    display: grid;
+    grid-template-columns: 1.6fr repeat(3, 1fr) 1.4fr;
+    gap: clamp(20px, 3vw, 40px);
+    padding-bottom: clamp(28px, 4vw, 44px);
+  }
+  .hmf__brand p {
+    margin-top: 14px;
+    max-width: 26ch;
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+    color: var(--ink-3);
+  }
+  .hmf__col h4,
+  .hmf__contact h4 {
+    margin-bottom: 14px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+  }
+  .hmf__col a {
+    display: block;
+    padding-block: 0.3rem;
+    font-size: var(--fs-sm);
+    color: var(--ink-2);
+    transition: color 0.16s;
+  }
+  .hmf__col a:hover {
+    color: var(--ink);
+  }
+  .hmf__contact a,
+  .hmf__contact span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-block: 0.3rem;
+    font-size: var(--fs-sm);
+    color: var(--ink-2);
+  }
+  .hmf__contact a:hover {
+    color: var(--ink);
+  }
+  .hmf__contact svg {
+    width: 15px;
+    height: 15px;
+    flex: none;
+    color: var(--ink-4);
+  }
+  .hmf__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: var(--fs-xs);
+    color: var(--ink-4);
+  }
+  .hmf__legal {
+    display: flex;
+    gap: 1.1rem;
+  }
+  .hmf__legal a,
+  .hmf__legal :global(button) {
+    font-size: var(--fs-xs);
+    color: var(--ink-4);
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+  .hmf__legal a:hover,
+  .hmf__legal :global(button):hover {
+    color: var(--ink);
+  }
+  @media (max-width: 900px) {
+    .hmf__top {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .hmf__brand {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 560px) {
+    .hmf {
+      padding-top: 40px;
+    }
+    .hmf__top {
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 16px;
+      text-align: center;
+    }
+    .hmf__brand {
+      grid-column: 1 / -1;
+    }
+    .hmf__brand p {
+      margin-inline: auto;
+      font-size: 11px;
+      max-width: 34ch;
+    }
+    .hmf__col h4,
+    .hmf__contact h4 {
+      font-size: 9px;
+      margin-bottom: 10px;
+    }
+    .hmf__col a {
+      font-size: 11px;
+      min-height: 32px;
+    }
+    .hmf__contact a,
+    .hmf__contact span {
+      font-size: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      overflow-wrap: anywhere;
+    }
+    .hmf__contact svg {
+      width: 12px;
+      height: 12px;
+    }
+    .hmf__bottom {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.6rem;
+      font-size: 10px;
+    }
+    .hmf__legal {
+      gap: 14px;
+    }
+    .hmf__legal a,
+    .hmf__legal :global(button) {
+      font-size: 10px;
+    }
+  }
+</style>

@@ -1,0 +1,188 @@
+---
+import '../styles/system.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent';
+import CookieSettingsButton from '../components/CookieSettingsButton';
+import { site } from '../config/site';
+
+interface Props {
+  title: string;
+  description: string;
+  noIndex?: boolean;
+  wide?: boolean;
+  ogImage?: string;
+  ogType?: string;
+}
+const { title, description, noIndex = false, ogImage = '/og/default.png', ogType = 'website' } = Astro.props;
+const origin = `https://${site.domain}`;
+const canonical = new URL(Astro.url.pathname, origin);
+const socialImage = new URL(ogImage, origin);
+
+const organisation = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['Organization', 'ProfessionalService'],
+      '@id': `${origin}/#business`,
+      name: site.name,
+      alternateName: 'Coding Agentur Gütersloh',
+      url: origin,
+      logo: {
+        '@type': 'ImageObject',
+        '@id': `${origin}/#logo`,
+        url: `${origin}/logo.png`,
+        contentUrl: `${origin}/logo.png`,
+        width: 512,
+        height: 512,
+        caption: site.name,
+      },
+      image: { '@id': `${origin}/#logo` },
+      email: site.contactEmail,
+      slogan: 'Websites, Apps & Kassensysteme – individuell entwickelt.',
+      description:
+        'Softwareentwicklung aus Gütersloh: individuelle Websites, Web-Apps, iOS- und Android-Apps, Kassensysteme und Schnittstellen.',
+      areaServed: [
+        { '@type': 'City', name: 'Gütersloh' },
+        { '@type': 'AdministrativeArea', name: 'Ostwestfalen-Lippe' },
+        { '@type': 'Country', name: 'Deutschland' },
+      ],
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Gütersloh',
+        addressRegion: 'Nordrhein-Westfalen',
+        addressCountry: 'DE',
+      },
+      knowsAbout: [
+        'Webentwicklung',
+        'Webdesign',
+        'App-Entwicklung',
+        'Kassensysteme',
+        'POS-Software',
+        'Softwareentwicklung',
+        'API-Integration',
+        'Web-Apps',
+      ],
+      knowsLanguage: ['de', 'en'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${origin}/#website`,
+      url: origin,
+      name: site.name,
+      inLanguage: 'de-DE',
+      publisher: { '@id': `${origin}/#business` },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content={noIndex
+        ? 'noindex, nofollow'
+        : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+    />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/jetbrains-mono-var.woff2" as="font" type="font/woff2" crossorigin />
+    {site.googleSiteVerification && <meta name="google-site-verification" content={site.googleSiteVerification} />}
+    {site.bingSiteVerification && <meta name="msvalidate.01" content={site.bingSiteVerification} />}
+    <meta name="author" content={site.name} />
+    <meta name="publisher" content={site.name} />
+    <meta name="geo.region" content="DE-NW" />
+    <meta name="geo.placename" content="Gütersloh" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content={`${site.name} – ${description}`.slice(0, 160)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="theme-color" content="#f5f3ee" />
+    <title>{title}</title>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(organisation)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Zum Inhalt springen</a>
+    <Header />
+    <main id="content"><slot /></main>
+    <Footer />
+    <CookieConsent client:load />
+    <CookieSettingsButton variant="corner" client:load />
+
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        root.classList.add('js');
+
+        const header = document.querySelector('.site-header');
+        if (header) {
+          const onScroll = () => header.classList.toggle('is-stuck', window.scrollY > 6);
+          onScroll();
+          addEventListener('scroll', onScroll, { passive: true });
+        }
+
+        const LKEY = 'ca-lang';
+        let lang = 'de';
+        try {
+          if (localStorage.getItem(LKEY) === 'en') lang = 'en';
+        } catch (e) {}
+        const applyLang = () => {
+          root.lang = lang;
+          document.querySelectorAll('[data-i18n]').forEach((el) => {
+            if (el.dataset.de == null) el.dataset.de = el.textContent;
+            el.textContent = lang === 'en' ? el.dataset.en || el.dataset.de : el.dataset.de;
+          });
+          document.querySelectorAll('[data-i18n-ph]').forEach((el) => {
+            if (el.dataset.dePh == null) el.dataset.dePh = el.getAttribute('placeholder') || '';
+            el.setAttribute('placeholder', lang === 'en' ? el.dataset.enPh || el.dataset.dePh : el.dataset.dePh);
+          });
+          document.querySelectorAll('.lang-switch [data-lang]').forEach((b) => {
+            b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+          });
+          document.dispatchEvent(new CustomEvent('ca:lang', { detail: lang }));
+        };
+        window.__caI18n = {
+          get lang() {
+            return lang;
+          },
+          set(l) {
+            lang = l === 'en' ? 'en' : 'de';
+            try {
+              localStorage.setItem(LKEY, lang);
+            } catch (e) {}
+            applyLang();
+          },
+          refresh: applyLang,
+        };
+        document.addEventListener('click', (e) => {
+          const b = e.target.closest && e.target.closest('.lang-switch [data-lang]');
+          if (b) window.__caI18n.set(b.dataset.lang);
+        });
+        applyLang();
+      })();
+    </script>
+    <script>
+      import '../scripts/motion';
+    </script>
+  </body>
+</html>

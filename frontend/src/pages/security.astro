@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const layers = [
+  {
+    n: '01',
+    title: 'Validierung an den Grenzen',
+    text: 'Daten aus Browsern, Formularen und externen Diensten werden nicht blind vertraut. Form und Umfang werden serverseitig geprüft.',
+  },
+  {
+    n: '02',
+    title: 'Autorisierung im Backend',
+    text: 'Die Oberfläche darf Optionen ausblenden. Ob ein Zugriff erlaubt ist, entscheidet ausschließlich der Server.',
+  },
+  {
+    n: '03',
+    title: 'Sichere Sessions',
+    text: 'Für Portale nutzen wir serverseitige Sessions mit geschützten Cookies statt Tokens im Browser-Speicher.',
+  },
+  {
+    n: '04',
+    title: 'Abwehr und Begrenzung',
+    text: 'Rate Limits, Bot-Schutz und Web Application Firewalls begrenzen missbräuchliche Anfragen als Teil eines mehrschichtigen Konzepts.',
+  },
+  {
+    n: '05',
+    title: 'Sichere Infrastruktur',
+    text: 'Verschlüsselte Verbindungen, Security-Header und eingeschränkte Datenbankrechte schützen die technischen Grenzen.',
+  },
+  {
+    n: '06',
+    title: 'Pflege und Transparenz',
+    text: 'Updates, Backups und nachvollziehbare Logs helfen, Systeme dauerhaft verlässlich zu betreiben.',
+  },
+];
+---
+
+<BaseLayout
+  title="Security by Design – Coding Agentur"
+  description="Sichere Architektur, serverseitige Berechtigungen und defensive Entwicklung für individuelle digitale Anwendungen."
+>
+  <section class="page-hero">
+    <div class="shell page-hero__copy reveal">
+      <p class="eyebrow eyebrow--dot">Security by Design</p>
+      <h1>Sicherheit beginnt bei der Architektur.</h1>
+      <p class="page-hero__lead">
+        Gute Sicherheit ist kein einzelnes Produkt. Sie entsteht durch klar getrennte Verantwortlichkeiten,
+        serverseitige Prüfungen und sorgfältige technische Entscheidungen.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="reveal">
+        <SectionHeading
+          eyebrow="Mehrere Schutzebenen"
+          title="Schutzmaßnahmen, die zum System gehören."
+          text="Welche Maßnahmen nötig sind, hängt vom Projekt und den verarbeiteten Daten ab. Die Grundlage bleibt gleich: Eingaben prüfen, Rechte serverseitig entscheiden und Angriffsflächen bewusst klein halten."
+        />
+      </div>
+      <div class="principles-grid">
+        {
+          layers.map((l, i) => (
+            <article class="reveal" style={`--d:${i * 0.04}s`}>
+              <span>{l.n}</span>
+              <h3>{l.title}</h3>
+              <p>{l.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="shell reveal">
+      <SectionHeading
+        eyebrow="Grundsatz"
+        title="Keine Sicherheitsversprechen aus dem Prospekt."
+        text="Kein System ist pauschal unangreifbar. Wir reduzieren Risiken mit angemessenen technischen Maßnahmen und prüfen sicherheitsrelevante Abläufe sorgfältig."
+      />
+      <a class="btn btn--signal" href="/kontakt/">
+        Sicherheitsanforderungen besprechen
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"></path></svg
+        >
+      </a>
+    </div>
+  </section>
+</BaseLayout>

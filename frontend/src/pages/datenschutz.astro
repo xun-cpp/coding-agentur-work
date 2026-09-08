@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CookieSettingsButton from '../components/CookieSettingsButton';
+import { site } from '../config/site';
+
+const updated = '3. September 2026';
+---
+
+<BaseLayout
+  title="Datenschutzerklärung – Coding Agentur"
+  description="Datenschutzerklärung von Coding Agentur: Welche Daten wir verarbeiten, auf welcher Rechtsgrundlage, wie lange – und welche Rechte Sie haben."
+  noIndex
+>
+  <section class="legal-page">
+    <div class="shell legal-page__content">
+      <p class="eyebrow">Rechtliches</p>
+      <h1>Datenschutzerklärung</h1>
+      <p class="legal-meta">Stand: {updated}</p>
+
+      <div class="legal-todo">
+        <b>Vor der Veröffentlichung zu ergänzen</b>
+        <p>
+          Name und Anschrift der verantwortlichen Stelle, Vertretungsberechtigte sowie – falls erforderlich – ein
+          Datenschutzbeauftragter. Diese Angaben dürfen nicht erfunden werden; bitte tragen Sie sie vor dem Launch ein.
+          Alle übrigen Abschnitte beschreiben die tatsächlich eingesetzte Technik dieser Website.
+        </p>
+      </div>
+
+      <h2>1. Verantwortliche Stelle</h2>
+      <p>
+        Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br />
+        <span class="legal-blank">[Name / Firma]</span><br />
+        <span class="legal-blank">[Straße und Hausnummer]</span><br />
+        <span class="legal-blank">[PLZ Gütersloh]</span><br />
+        E-Mail: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+      </p>
+
+      <h2>2. Grundsätzliches</h2>
+      <p>
+        Wir verarbeiten personenbezogene Daten nur, soweit dies für eine funktionsfähige Website sowie für unsere
+        Inhalte und Leistungen erforderlich ist. Rechtsgrundlagen sind je nach Fall Art. 6 Abs. 1 lit. a DSGVO
+        (Einwilligung), lit. b DSGVO (Vertrag und vorvertragliche Maßnahmen) oder lit. f DSGVO (berechtigtes Interesse
+        an einem sicheren, funktionierenden Auftritt). Die Übertragung erfolgt ausschließlich verschlüsselt über HTTPS.
+      </p>
+
+      <h2>3. Hosting und Server-Logfiles</h2>
+      <p>
+        Diese Website läuft auf einem von uns angemieteten Server bei
+        <span class="legal-blank">[Hosting-Anbieter und Serverstandort]</span>. Beim Aufruf werden automatisch
+        Zugriffsdaten in Logfiles gespeichert: gekürzte oder vollständige IP-Adresse, Datum und Uhrzeit, aufgerufene
+        Adresse, übertragene Datenmenge, Statuscode, Referrer sowie Browser- und Systemangaben. Diese Daten sind für den
+        sicheren Betrieb erforderlich (Art. 6 Abs. 1 lit. f DSGVO) und werden nach kurzer Zeit gelöscht. Eine
+        Zusammenführung mit anderen Datenquellen findet nicht statt.
+      </p>
+
+      <h2>4. Content Delivery Network und Sicherheitsprüfung (Cloudflare)</h2>
+      <p>
+        Wir setzen Dienste der Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA ein. Cloudflare liefert
+        die Website beschleunigt aus und wehrt Angriffe ab. Dabei wird der Datenverkehr über Server von Cloudflare
+        geleitet; verarbeitet werden insbesondere IP-Adresse, Aufrufzeitpunkt und technische Browserdaten.
+        Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren und verfügbaren Angebot (Art. 6 Abs. 1 lit. f
+        DSGVO). Für Übermittlungen in die USA stützen wir uns auf die Standardvertragsklauseln der EU-Kommission und –
+        soweit anwendbar – auf die Zertifizierung des Anbieters unter dem EU-US Data Privacy Framework.
+      </p>
+      <p>
+        Im Kontaktformular kommt zusätzlich <b>Cloudflare Turnstile</b> zum Einsatz. Das Verfahren prüft, ob eine Eingabe
+        von einem Menschen stammt, und ersetzt ein klassisches CAPTCHA. Es wird erst geladen, sobald Sie beginnen, das Formular
+        auszufüllen. Verarbeitet werden technische Merkmale Ihres Browsers und Ihre IP-Adresse. Rechtsgrundlage ist unser
+        berechtigtes Interesse an der Abwehr automatisierter Anfragen und Spam (Art. 6 Abs. 1 lit. f DSGVO).
+      </p>
+
+      <h2>5. Cookies und Einwilligungsverwaltung</h2>
+      <p>
+        Wir speichern nur dann Informationen auf Ihrem Endgerät, wenn das für den Betrieb der Seite unbedingt
+        erforderlich ist (§ 25 Abs. 2 Nr. 2 TTDSG) oder Sie eingewilligt haben (§ 25 Abs. 1 TTDSG, Art. 6 Abs. 1 lit. a
+        DSGVO). Notwendig sind derzeit:
+      </p>
+      <ul>
+        <li><b>ca_consent</b> – speichert Ihre Auswahl aus dem Einwilligungsbanner, Laufzeit 12 Monate.</li>
+        <li><b>ca-lang</b> – merkt sich die gewählte Sprache im lokalen Browserspeicher.</li>
+        <li><b>Cloudflare Turnstile</b> – Sicherheitsprüfung des Kontaktformulars, Sitzung bis 30 Minuten.</li>
+      </ul>
+      <p>
+        Analyse- oder Marketing-Dienste setzen wir aktuell nicht ein. Ihre Entscheidung wird mit Zeitpunkt und Version
+        dokumentiert und lässt sich jederzeit mit Wirkung für die Zukunft ändern oder widerrufen:
+      </p>
+      <p><CookieSettingsButton client:load /></p>
+
+      <h2>6. Kontaktformular und E-Mail</h2>
+      <p>
+        Wenn Sie uns über das Formular oder per E-Mail kontaktieren, verarbeiten wir die von Ihnen angegebenen Daten –
+        Unternehmen, Name, E-Mail-Adresse, optional Telefonnummer, Projektart, Budgetrahmen und Ihre Nachricht – zur
+        Bearbeitung Ihrer Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO bei vorvertraglichen Anfragen, sonst
+        Art. 6 Abs. 1 lit. f DSGVO. Ihre Anfrage samt technischer Verbindungsdaten wird bis zur abschließenden
+        Bearbeitung gespeichert und danach gelöscht, soweit keine gesetzlichen Aufbewahrungsfristen entgegenstehen.
+      </p>
+      <p>
+        Für den Versand der Bestätigungs- und Benachrichtigungs-E-Mails nutzen wir den E-Mail-Dienstleister <b>Resend</b
+        > (USA) sowie <b>Cloudflare Email Routing</b> für die Weiterleitung eingehender Nachrichten an unser Postfach. Beide
+        Anbieter verarbeiten die Inhalts- und Verbindungsdaten der Nachricht ausschließlich zu diesem Zweck und in unserem
+        Auftrag; für Übermittlungen in die USA gelten die Standardvertragsklauseln der EU-Kommission.
+      </p>
+
+      <h2>7. Kundenbereich</h2>
+      <p>
+        Der geschützte Kundenbereich ist nur nach Anmeldung zugänglich. Dort verarbeiten wir die Zugangsdaten und die im
+        Rahmen des Projekts anfallenden Inhalte zur Vertragsdurchführung (Art. 6 Abs. 1 lit. b DSGVO). Zugriffe werden
+        protokolliert, um unbefugte Nutzung zu erkennen.
+      </p>
+
+      <h2>8. Schriftarten und externe Inhalte</h2>
+      <p>
+        Alle Schriftarten liefern wir von unserem eigenen Server aus. Es besteht keine Verbindung zu Google Fonts oder
+        vergleichbaren Diensten. Karten, Videos oder Social-Media-Elemente von Drittanbietern binden wir derzeit nicht
+        ein.
+      </p>
+
+      <h2>9. Empfänger und Auftragsverarbeitung</h2>
+      <p>
+        Eine Weitergabe Ihrer Daten erfolgt nur an Dienstleister, die uns beim Betrieb dieser Website unterstützen –
+        Hosting, Content Delivery, E-Mail-Versand – und ausschließlich auf Grundlage von Verträgen zur
+        Auftragsverarbeitung nach Art. 28 DSGVO. Eine Nutzung Ihrer Daten zu Werbezwecken Dritter findet nicht statt.
+      </p>
+
+      <h2>10. Speicherdauer</h2>
+      <p>
+        Wir speichern personenbezogene Daten nur so lange, wie es für den jeweiligen Zweck erforderlich ist oder
+        gesetzliche Aufbewahrungspflichten – etwa handels- und steuerrechtlich sechs bis zehn Jahre – bestehen. Danach
+        werden die Daten gelöscht oder anonymisiert.
+      </p>
+
+      <h2>11. Ihre Rechte</h2>
+      <p>
+        Sie haben jederzeit das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17),
+        Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) sowie Widerspruch gegen Verarbeitungen
+        auf Grundlage berechtigter Interessen (Art. 21). Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für
+        die Zukunft widerrufen. Wenden Sie sich dafür an <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a
+        >.
+      </p>
+      <p>
+        Unabhängig davon steht Ihnen ein Beschwerderecht bei einer Aufsichtsbehörde zu, für Nordrhein-Westfalen bei der
+        Landesbeauftragten für Datenschutz und Informationsfreiheit Nordrhein-Westfalen, Kavalleriestraße 2–4, 40213
+        Düsseldorf.
+      </p>
+
+      <h2>12. Änderungen dieser Erklärung</h2>
+      <p>
+        Wir passen diese Datenschutzerklärung an, sobald sich die eingesetzte Technik oder die rechtlichen Anforderungen
+        ändern. Es gilt jeweils die auf dieser Seite veröffentlichte Fassung.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

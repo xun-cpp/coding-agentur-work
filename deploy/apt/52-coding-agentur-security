@@ -1,0 +1,10 @@
+Unattended-Upgrade::Origins-Pattern {
+    "origin=nginx,codename=${distro_codename},label=nginx";
+};
+
+Unattended-Upgrade::Remove-Unused-Dependencies "true";
+Unattended-Upgrade::Automatic-Reboot "false";
+
+Acquire::AllowInsecureRepositories "false";
+Acquire::AllowDowngradeToInsecureRepositories "false";
+APT::Get::AllowUnauthenticated "false";

@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import I18n from '../components/I18n.astro';
+
+const title = 'Über unsere Arbeitsweise | Coding Agentur';
+const description =
+  'Wie wir Webanwendungen entwickeln: klare Zuständigkeiten, überprüfbare Sicherheitsgrenzen und wartbare Abläufe.';
+
+const principles = [
+  {
+    title: ['Verantwortung trennen', 'Separate responsibilities'],
+    text: [
+      'HTTP, Domänenlogik, Persistenz und Infrastruktur bleiben getrennt, damit Änderungen lokal nachvollziehbar sind.',
+      'HTTP, domain logic, persistence and infrastructure stay separate so changes remain locally understandable.',
+    ],
+  },
+  {
+    title: ['Grenzen prüfen', 'Validate boundaries'],
+    text: [
+      'Eingaben, Konfiguration und externe Antworten werden an der jeweiligen Vertrauensgrenze validiert.',
+      'Input, configuration and external responses are validated at their respective trust boundaries.',
+    ],
+  },
+  {
+    title: ['Betrieb mitdenken', 'Design for operations'],
+    text: [
+      'Logs, Timeouts, Rate Limits, sichere Defaults und ein geordneter Shutdown gehören zum Anwendungscode.',
+      'Logs, timeouts, rate limits, safe defaults and graceful shutdown are part of the application code.',
+    ],
+  },
+];
+
+const facts = [
+  { value: 'Fastify', label: ['HTTP-Schicht', 'HTTP layer'] },
+  { value: 'PostgreSQL', label: ['Persistenz', 'Persistence'] },
+  { value: 'TypeScript', label: ['Strenge Typen', 'Strict types'] },
+  { value: 'Vitest', label: ['Kritische Tests', 'Critical tests'] },
+];
+---
+
+<BaseLayout {title} {description} noIndex>
+  <section class="about-hero">
+    <div class="shell about-hero__inner">
+      <p class="eyebrow eyebrow--dot"><I18n de="Über uns" en="About us" /></p>
+      <h1>
+        <I18n de="Software mit nachvollziehbaren Entscheidungen." en="Software with decisions you can inspect." />
+      </h1>
+      <p>
+        <I18n
+          de="Wir entwickeln digitale Produkte entlang klarer Systemgrenzen. Entscheidungen zu Daten, Sicherheit und Betrieb werden früh getroffen und bleiben im Code nachvollziehbar."
+          en="We build digital products around clear system boundaries. Decisions about data, security and operations are made early and remain traceable in the code."
+        />
+      </p>
+      <div class="facts">
+        {
+          facts.map((fact) => (
+            <div>
+              <>
+                <b>{fact.value}</b>
+                <span>
+                  <I18n de={fact.label[0]} en={fact.label[1]} />
+                </span>
+              </>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <p class="section-kicker"><span>01 /</span><I18n de="Arbeitsweise" en="Approach" /></p>
+      <h2 class="section-title">
+        <I18n de="Klar im Code. Erklärbar im Review." en="Clear in code. Explainable in review." />
+      </h2>
+      <div class="principles">
+        {
+          principles.map((principle, index) => (
+            <article>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>
+                <I18n de={principle.title[0]} en={principle.title[1]} />
+              </h3>
+              <p>
+                <I18n de={principle.text[0]} en={principle.text[1]} />
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section architecture">
+    <div class="shell architecture__grid">
+      <div>
+        <p class="section-kicker"><span>02 /</span><I18n de="Nachvollziehbarkeit" en="Traceability" /></p>
+        <h2 class="section-title">
+          <I18n de="Entscheidungen gehören zur Implementierung." en="Decisions are part of the implementation." />
+        </h2>
+      </div>
+      <p>
+        <I18n
+          de="Architektur, Trust Boundaries, Session-Lebensdauer, Persistenz und bewusste Trade-offs werden gemeinsam mit dem reproduzierbaren Build- und Testablauf gepflegt."
+          en="Architecture, trust boundaries, session lifetime, persistence and deliberate trade-offs are maintained alongside the reproducible build and test workflow."
+        />
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-hero {
+    padding: calc(var(--header-h) + var(--sp-7)) 0 var(--sp-7);
+    background: linear-gradient(165deg, var(--paper) 0%, var(--paper-2) 62%, #e9edf1 100%);
+    border-bottom: 1px solid var(--line);
+  }
+  .about-hero__inner {
+    max-width: 66rem;
+  }
+  .about-hero h1 {
+    max-width: 15ch;
+    margin-top: var(--sp-4);
+    font-size: clamp(2.5rem, 7vw, 4.8rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    font-weight: 540;
+  }
+  .about-hero p {
+    max-width: 62ch;
+    margin-top: var(--sp-5);
+    font-size: var(--fs-md);
+    line-height: 1.65;
+    color: var(--ink-2);
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-4);
+    margin-top: var(--sp-7);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--line-2);
+  }
+  .facts b {
+    display: block;
+    font-size: clamp(1rem, 2.5vw, 1.45rem);
+    letter-spacing: -0.02em;
+  }
+  .facts span {
+    display: block;
+    margin-top: 6px;
+    font-size: var(--fs-sm);
+    color: var(--ink-3);
+  }
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-4);
+    margin-top: var(--sp-6);
+  }
+  .principles article {
+    padding: var(--sp-5);
+    border: 1px solid var(--line);
+    border-radius: var(--r-2);
+    background: var(--panel);
+  }
+  .principles span {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    letter-spacing: 0.14em;
+    color: var(--brand);
+  }
+  .principles h3 {
+    margin-top: var(--sp-4);
+    font-size: var(--fs-md);
+  }
+  .principles p {
+    margin-top: var(--sp-2);
+    font-size: var(--fs-sm);
+    line-height: 1.65;
+    color: var(--ink-3);
+  }
+  .architecture {
+    background: var(--panel-2);
+    border-block: 1px solid var(--line);
+  }
+  .architecture__grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--sp-7);
+    align-items: end;
+  }
+  .architecture__grid p {
+    max-width: 46ch;
+    font-size: var(--fs-md);
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  @media (max-width: 760px) {
+    .facts,
+    .principles {
+      grid-template-columns: 1fr 1fr;
+    }
+    .architecture__grid {
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+    }
+  }
+  @media (max-width: 480px) {
+    .facts,
+    .principles {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,52 @@
+{
+  "name": "reference-application-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0 <25"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build && node ../tools/generate-csp.mjs",
+    "check": "astro check",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "format": "prettier --write \"src/**/*.{ts,tsx,astro,css}\" \"tests/**/*.mjs\" astro.config.mjs",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,astro,css}\" \"tests/**/*.mjs\" astro.config.mjs",
+    "preview": "astro preview",
+    "audit": "npm audit --audit-level=moderate"
+  },
+  "dependencies": {
+    "@astrojs/react": "6.0.5",
+    "astro": "7.3.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "prettier": "3.9.6",
+    "prettier-plugin-astro": "0.14.1",
+    "typescript": "5.9.3"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "plugins": [
+      "prettier-plugin-astro"
+    ],
+    "overrides": [
+      {
+        "files": "*.astro",
+        "options": {
+          "parser": "astro"
+        }
+      }
+    ]
+  }
+}

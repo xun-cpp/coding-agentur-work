@@ -1,0 +1,36 @@
+---
+import ProductStage from './ProductStage.astro';
+import I18n from '../I18n.astro';
+---
+
+<section class="hp-hero" data-motion="hero">
+  <div class="hero-atmosphere" aria-hidden="true"><i></i><i></i></div>
+  <div class="shell hp-hero__grid">
+    <div class="hp-hero__copy">
+      <p class="eyebrow eyebrow--dot reveal"><I18n de="Gütersloh · deutschlandweit" en="Gütersloh · Germany-wide" /></p>
+      <h1 class="hp-hero__h1 reveal" style="--d:.08s">
+        <I18n de="Was Sie brauchen." en="What you need." /><br />
+        <span class="hero-outline"><I18n de="Wir entwickeln es." en="We build it." /></span>
+      </h1>
+      <p class="hp-hero__sub reveal" style="--d:.16s">
+        <I18n de="Websites, Kassensysteme, Mobile Apps." en="Websites, POS systems, mobile apps." /><br />
+        <I18n de="Für Ihr Unternehmen maßgeschneidert entwickelt." en="Tailor-made for your business." />
+      </p>
+      <a class="hero-explore reveal" href="#leistungen" style="--d:.24s">
+        <span class="hero-explore__icon" aria-hidden="true"
+          ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            ><path d="m9 5 7 7-7 7"></path></svg
+          ></span
+        >
+        <span><I18n de="Entdecken, was möglich ist" en="Explore the possibilities" /></span>
+      </a>
+      <div class="hero-caption reveal" style="--d:.32s">
+        <span class="hero-caption__line"></span><I18n
+          de="Von der ersten Idee bis zum letzten Detail."
+          en="From the first idea to the final detail."
+        />
+      </div>
+    </div>
+    <div class="hp-hero__stage"><ProductStage /></div>
+  </div>
+</section>

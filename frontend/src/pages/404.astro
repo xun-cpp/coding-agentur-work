@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Seite nicht gefunden – Coding Agentur"
+  description="Die gewünschte Seite wurde nicht gefunden."
+  noIndex
+>
+  <section class="not-found">
+    <div class="shell">
+      <strong>404 · Seite nicht gefunden</strong>
+      <h1>Diese Seite gibt es nicht.</h1>
+      <p>Die aufgerufene Adresse ist nicht verfügbar oder wurde verschoben.</p>
+      <a class="btn btn--signal" href="/">
+        Zur Startseite
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"></path></svg
+        >
+      </a>
+    </div>
+  </section>
+</BaseLayout>

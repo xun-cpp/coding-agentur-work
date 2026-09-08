@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { services } from '../config/site';
+
+const stack = [
+  { title: 'Frontend', items: ['TypeScript', 'React', 'Astro', 'Swift'] },
+  { title: 'Backend', items: ['Node.js', 'PHP', 'Python', 'REST-APIs'] },
+  { title: 'Daten', items: ['PostgreSQL', 'SQL', 'Caching', 'Storage'] },
+  { title: 'Betrieb', items: ['Linux', 'Nginx', 'Cloudflare', 'Docker'] },
+];
+---
+
+<BaseLayout
+  title="Leistungen: Website, App & Kassensystem | Coding Agentur"
+  description="Website erstellen lassen, App programmieren, Kassensystem einrichten oder Systeme verbinden – individuelle Entwicklung aus Gütersloh für ganz Deutschland."
+  ogImage="/og/leistungen.png"
+>
+  <section class="page-hero">
+    <div class="shell page-hero__copy reveal">
+      <p class="eyebrow eyebrow--dot">Leistungen</p>
+      <h1>Individuell entwickelt. Sinnvoll integriert.</h1>
+      <p class="page-hero__lead">
+        Von der öffentlichen Website bis zur internen Geschäftsanwendung: digitale Lösungen mit einer klaren Aufgabe und
+        einer tragfähigen technischen Basis.
+      </p>
+      <div class="page-hero__meta">
+        <span>Konzept und Design</span>
+        <span>Frontend und Backend</span>
+        <span>Weiterentwicklung</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="service-cards">
+        {
+          services.map((service, i) => (
+            <article class="reveal" style={`--d:${i * 0.05}s`}>
+              <p class="eyebrow">{service.eyebrow}</p>
+              <h2>{service.label}</h2>
+              <p>{service.description}</p>
+              <a class="link" href={`/${service.slug}/`}>
+                Details ansehen
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h13M13 6l6 6-6 6" />
+                </svg>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section technology-section">
+    <div class="shell">
+      <div class="reveal">
+        <SectionHeading
+          eyebrow="Technologie"
+          title="Technologie wird nach Aufgabe gewählt – nicht umgekehrt."
+          text="Wir nutzen bewährte Bausteine dort, wo sie einen konkreten Vorteil für Ihr Projekt bringen."
+        />
+      </div>
+      <div class="technology-grid">
+        {
+          stack.map((group, i) => (
+            <article class="reveal" style={`--d:${i * 0.05}s`}>
+              <h3>{group.title}</h3>
+              <ul>
+                {group.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .technology-grid ul {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--sp-4);
+    display: grid;
+    gap: 0.35rem;
+  }
+  .technology-grid li {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--ink-3);
+  }
+</style>

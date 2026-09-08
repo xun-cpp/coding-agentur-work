@@ -1,0 +1,28 @@
+---
+import DeviceStudio from './DeviceStudio';
+import I18n from '../I18n.astro';
+---
+
+<section class="device-section" data-motion data-device-story>
+  <div class="device-sticky">
+    <div class="shell">
+      <div class="device-heading">
+        <div>
+          <p class="section-kicker"><span>02 /</span><I18n de="Passt sich Ihnen an" en="Adapts to you" /></p><h2
+            class="section-title"
+          >
+            <I18n de="Ein Erlebnis." en="One experience." />
+            <em><I18n de="Jedes Format." en="Every format." /></em>
+          </h2>
+        </div>
+        <p class="section-aside">
+          <I18n
+            de="Vom großen Bildschirm bis in die Hosentasche. Scrollen Sie weiter."
+            en="From your desktop to your pocket. Keep scrolling."
+          />
+        </p>
+      </div>
+      <DeviceStudio client:visible />
+    </div>
+  </div>
+</section>

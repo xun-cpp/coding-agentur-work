@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const items = [
+  {
+    n: '01',
+    title: 'Technische Pflege',
+    text: 'Abhängigkeiten prüfen, Updates planen und die technische Grundlage langfristig wartbar halten.',
+  },
+  {
+    n: '02',
+    title: 'Änderungen und Funktionen',
+    text: 'Bestehende Abläufe verbessern und neue Anforderungen strukturiert in das System integrieren.',
+  },
+  {
+    n: '03',
+    title: 'Monitoring und Fehlerbehebung',
+    text: 'Relevante technische Signale im Blick behalten und Probleme nachvollziehbar bearbeiten.',
+  },
+  {
+    n: '04',
+    title: 'Backups und Sicherheitsupdates',
+    text: 'Schutzmaßnahmen und Sicherungskonzepte im passenden Umfang regelmäßig überprüfen.',
+  },
+  {
+    n: '05',
+    title: 'Performance im Blick',
+    text: 'Engpässe erkennen und gezielt verbessern, wenn sich Nutzung oder Inhalte verändern.',
+  },
+  {
+    n: '06',
+    title: 'Direkter Austausch',
+    text: 'Neue Ideen und Änderungswünsche mit einem Ansprechpartner besprechen, der das System kennt.',
+  },
+];
+---
+
+<BaseLayout
+  title="Service und Pflege – Coding Agentur"
+  description="Technische Pflege, Updates, Weiterentwicklung und Support für individuelle digitale Anwendungen."
+>
+  <section class="page-hero">
+    <div class="shell page-hero__copy reveal">
+      <p class="eyebrow eyebrow--dot">Service und Pflege</p>
+      <h1>Nach dem Launch ist nicht Schluss.</h1>
+      <p class="page-hero__lead">
+        Digitale Produkte bleiben dann gut, wenn sie gepflegt, beobachtet und bei neuen Anforderungen sinnvoll
+        weiterentwickelt werden.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="reveal">
+        <SectionHeading
+          eyebrow="Laufende Begleitung"
+          title="Der passende Umfang richtet sich nach Ihrer Anwendung."
+          text="Leistungen und Konditionen werden transparent und passend zum Betrieb vereinbart – nicht als starrer Tarif ohne Bezug zum Projekt."
+        />
+      </div>
+      <div class="principles-grid">
+        {
+          items.map((it, i) => (
+            <article class="reveal" style={`--d:${i * 0.04}s`}>
+              <span>{it.n}</span>
+              <h3>{it.title}</h3>
+              <p>{it.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,5 @@
+Contact: mailto:kontakt@coding-agentur.de
+Canonical: https://coding-agentur.de/.well-known/security.txt
+Preferred-Languages: de, en
+Policy: https://coding-agentur.de/security/
+Expires: 2027-09-03T00:00:00Z

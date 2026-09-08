@@ -1,0 +1,48 @@
+---
+import I18n from '../I18n.astro';
+
+const steps = [
+  {
+    n: '01',
+    de: ['Gespräch', 'Ziel, Umfang und Budget klären.'],
+    en: ['Conversation', 'Clarify goal, scope and budget.'],
+  },
+  { n: '02', de: ['Konzept', 'Lösung entwerfen und abstimmen.'], en: ['Concept', 'Design the solution, align on it.'] },
+  { n: '03', de: ['Entwicklung', 'Bauen, testen, wöchentlich zeigen.'], en: ['Build', 'Develop, test, show weekly.'] },
+  {
+    n: '04',
+    de: ['Launch & Betrieb', 'Veröffentlichen und weiter betreuen.'],
+    en: ['Launch & care', 'Ship it, then keep it healthy.'],
+  },
+];
+---
+
+<section class="hp-proc section" id="ablauf" data-motion>
+  <div class="shell">
+    <div class="hp-proc__head reveal">
+      <div>
+        <p class="section-kicker"><span>03 /</span><I18n de="Gemeinsam zum Ergebnis" en="Made together" /></p>
+        <h2 class="section-title">
+          <I18n de="Kurze Wege." en="A direct connection." />
+          <em><I18n de="Gute Zusammenarbeit." en="Great collaboration." /></em>
+        </h2>
+      </div>
+    </div>
+
+    <ol class="hp-proc__track">
+      {
+        steps.map((s, i) => (
+          <li class="hp-proc__step reveal" style={`--d:${i * 0.07}s`}>
+            <span class="hp-proc__n">{s.n}</span>
+            <h3>
+              <I18n de={s.de[0]} en={s.en[0]} />
+            </h3>
+            <p>
+              <I18n de={s.de[1]} en={s.en[1]} />
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+import InquiryForm from '../../features/contact/InquiryForm';
+import I18n from '../I18n.astro';
+import { site } from '../../config/site';
+
+const points = [
+  { de: 'Direkt mit den Entwicklern sprechen', en: 'Talk directly to the developers' },
+  { de: 'Kostenloses, unverbindliches Erstgespräch', en: 'Free, no-obligation first call' },
+  { de: 'Aus Gütersloh, deutschlandweit tätig', en: 'Based in Gütersloh, working Germany-wide' },
+];
+const check = '<path d="m5 12 4.5 4.5L20 6"/>';
+---
+
+<section class="hp-cta section" id="kontakt">
+  <div class="shell hp-cta__grid">
+    <div class="hp-cta__copy reveal">
+      <div class="hp-cta__seal" aria-hidden="true">&lt;/&gt;</div>
+      <p class="eyebrow eyebrow--dot"><I18n de="Kontakt" en="Contact" /></p>
+      <h2><I18n de="Was haben Sie vor?" en="What do you have in mind?" /></h2>
+      <p class="hp-cta__line">
+        <I18n de="Eine neue Idee oder der nächste Schritt." en="A new idea or the next step." /><br />
+        <I18n de="Wir hören zu und denken mit." en="We listen and work it out together." />
+      </p>
+      <a class="hp-cta__mail" href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+      <ul class="hp-cta__points">
+        {
+          points.map((p) => (
+            <li>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                set:html={check}
+              />
+              <I18n de={p.de} en={p.en} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="hp-cta__form reveal" style="--d:.08s">
+      <InquiryForm apiBaseUrl={site.apiBaseUrl} turnstileSiteKey={site.turnstileSiteKey} compact client:load />
+    </div>
+  </div>
+</section>

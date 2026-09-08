@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LoginForm from '../features/portal/LoginForm';
+import { site } from '../config/site';
+---
+
+<BaseLayout title="Kundenlogin – Coding Agentur" description="Geschützter Kundenbereich von Coding Agentur." noIndex>
+  <section class="login-page">
+    <div class="login-card">
+      <p class="eyebrow">Kundenbereich</p><h1>Willkommen zurück.</h1><p>
+        Der Kundenbereich ist ausschließlich für eingeladene Kundinnen und Kunden vorgesehen.
+      </p><LoginForm apiBaseUrl={site.apiBaseUrl} turnstileSiteKey={site.turnstileSiteKey} client:load /><p
+        class="login-card__hint"
+      >
+        Sie haben noch keinen Zugang? Kundenkonten werden projektbezogen per Einladung eingerichtet.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

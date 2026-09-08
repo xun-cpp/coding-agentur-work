@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PortalGate from '../features/portal/PortalGate';
+import { site } from '../config/site';
+---
+
+<BaseLayout title="Kundenportal – Coding Agentur" description="Geschützter Kundenbereich." noIndex>
+  <PortalGate apiBaseUrl={site.apiBaseUrl} client:load />
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InquiryForm from '../features/contact/InquiryForm';
+import { site } from '../config/site';
+---
+
+<BaseLayout
+  title="Kontakt: Projekt anfragen | Coding Agentur Gütersloh"
+  description="Website, App oder Kassensystem geplant? Schreiben Sie uns – kostenloses Erstgespräch, direkt mit den Entwicklern aus Gütersloh."
+  ogImage="/og/kontakt.png"
+>
+  <section class="contact-section">
+    <div class="shell contact-layout">
+      <aside class="contact-aside reveal">
+        <p class="eyebrow eyebrow--dot">Kontakt</p>
+        <h1>Erzählen Sie uns von Ihrem Vorhaben.</h1>
+        <p>
+          Ein paar Sätze genügen für den Anfang. Wir schauen gemeinsam, was sinnvoll ist, und melden uns mit einer
+          ersten Einschätzung.
+        </p>
+        <div class="contact-channels">
+          <a href={`mailto:${site.contactEmail}`}>
+            {site.contactEmail}
+            <span aria-hidden="true">→</span>
+          </a>
+          {
+            site.whatsappNumber && (
+              <a href={`https://wa.me/${site.whatsappNumber}`}>
+                Über WhatsApp schreiben
+                <span aria-hidden="true">→</span>
+              </a>
+            )
+          }
+        </div>
+      </aside>
+      <div class="reveal" style="--d:.08s">
+        <InquiryForm apiBaseUrl={site.apiBaseUrl} turnstileSiteKey={site.turnstileSiteKey} client:load />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

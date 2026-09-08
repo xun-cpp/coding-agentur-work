@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout
+  title="Impressum – Coding Agentur"
+  description="Impressum und Anbieterkennzeichnung von Coding Agentur, Gütersloh."
+  noIndex
+>
+  <section class="legal-page">
+    <div class="shell legal-page__content">
+      <p class="eyebrow">Rechtliches</p>
+      <h1>Impressum</h1>
+
+      <div class="legal-todo">
+        <b>Vor der Veröffentlichung zu ergänzen</b>
+        <p>
+          Die Pflichtangaben nach § 5 DDG (Name, Anschrift, Rechtsform, Vertretung, Registerdaten,
+          Umsatzsteuer-Identifikationsnummer) müssen vollständig eingetragen werden, bevor die Seite öffentlich beworben
+          wird. Wir erfinden diese Angaben bewusst nicht. Fehlt eine Pflichtangabe, ist das abmahnfähig.
+        </p>
+      </div>
+
+      <h2>Angaben gemäß § 5 DDG</h2>
+      <p>
+        <span class="legal-blank">[Firmenname inkl. Rechtsform]</span><br />
+        <span class="legal-blank">[Straße und Hausnummer]</span><br />
+        <span class="legal-blank">[PLZ] Gütersloh</span><br />
+        Deutschland
+      </p>
+
+      <h2>Vertreten durch</h2>
+      <p><span class="legal-blank">[Vor- und Nachname der vertretungsberechtigten Person(en)]</span></p>
+
+      <h2>Kontakt</h2>
+      <p>
+        E-Mail: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a><br />
+        Telefon: <span class="legal-blank">[Telefonnummer]</span>
+      </p>
+
+      <h2>Registereintrag und Umsatzsteuer</h2>
+      <p>
+        Registergericht und -nummer: <span class="legal-blank">[falls vorhanden]</span><br />
+        Umsatzsteuer-Identifikationsnummer nach § 27a UStG: <span class="legal-blank">[falls vorhanden]</span>
+      </p>
+
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p><span class="legal-blank">[Name, Anschrift]</span></p>
+
+      <h2>Streitbeilegung</h2>
+      <p>
+        Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
+        Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
+
+      <h2>Haftung für Inhalte und Links</h2>
+      <p>
+        Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+        Für Inhalte externer Links ist der jeweilige Anbieter verantwortlich. Zum Zeitpunkt der Verlinkung waren keine
+        Rechtsverstöße erkennbar; bei Bekanntwerden von Rechtsverletzungen entfernen wir entsprechende Links umgehend.
+      </p>
+
+      <h2>Urheberrecht</h2>
+      <p>
+        Die durch uns erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge
+        Dritter sind als solche gekennzeichnet.
+      </p>
+
+      <p class="legal-meta">
+        Datenschutzhinweise finden Sie in unserer <a href="/datenschutz/">Datenschutzerklärung</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

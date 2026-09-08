@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import Engineering from '../components/home/Engineering.astro';
+import Process from '../components/home/Process.astro';
+import ContactCta from '../components/home/ContactCta.astro';
+import BuildSelector from '../components/home/BuildSelector';
+import I18n from '../components/I18n.astro';
+import '../styles/home.css';
+import { site } from '../config/site';
+
+const title = 'Webdesign & Programmierung Gütersloh | Websites, Apps, Kassensysteme';
+const description =
+  'Website erstellen lassen, App entwickeln, Kassensystem einrichten: individuelle Programmierung aus Gütersloh – für Unternehmen in ganz Deutschland. Direkt mit den Entwicklern.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `https://${site.domain}/#webpage`,
+  url: `https://${site.domain}/`,
+  name: title,
+  description,
+  inLanguage: 'de-DE',
+  isPartOf: { '@id': `https://${site.domain}/#website` },
+  about: { '@id': `https://${site.domain}/#business` },
+  primaryImageOfPage: { '@id': `https://${site.domain}/#logo` },
+  mainEntity: {
+    '@type': 'OfferCatalog',
+    name: 'Leistungen',
+    itemListElement: [
+      ['Website erstellen lassen', 'Individuelle Unternehmenswebsites, Landingpages und Relaunches.', '/websites'],
+      ['Web-App entwickeln', 'Kundenportale, Dashboards und interne Systeme im Browser.', '/web-apps'],
+      ['App-Entwicklung iOS & Android', 'Mobile Anwendungen für Kunden und Teams.', '/apps'],
+      ['Kassensystem', 'POS-Oberflächen, Bestellung, Zahlung und Bon.', '/kassensysteme'],
+      ['Webshop programmieren', 'Onlineshops mit Katalog, Warenkorb und Zahlung.', '/webshops'],
+      ['API & Schnittstellen', 'Systeme verbinden, Daten automatisch übergeben.', '/integrationen'],
+    ].map(([name, itemDescription, path]) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name,
+        description: itemDescription,
+        url: `https://${site.domain}${path}/`,
+        provider: { '@id': `https://${site.domain}/#business` },
+        areaServed: { '@type': 'Country', name: 'Deutschland' },
+      },
+    })),
+  },
+};
+const industries = [
+  {
+    de: 'Gastronomie',
+    en: 'Hospitality',
+    text: 'Bestellen. Bezahlen. Fertig.',
+    english: 'Order. Pay. Done.',
+    path: 'M5 3v7m3-7v7m3-7v7M5 7h6M8 10v11M19 3c-3 4-3 8 0 9V3Zm0 9v9',
+  },
+  {
+    de: 'Handel',
+    en: 'Retail',
+    text: 'Online & vor Ort.',
+    english: 'Online & in store.',
+    path: 'M3 10h18v11H3Zm-1 0 3-7h14l3 7M9 21v-7h6v7',
+  },
+  {
+    de: 'Handwerk',
+    en: 'Trades',
+    text: 'Aufträge im Griff.',
+    english: 'Jobs under control.',
+    path: 'm4 21 9-9M14 3l-1 4 4 4 4-1a7 7 0 0 1-9 8L5 23l-3-3 7-7a7 7 0 0 1 5-10',
+  },
+  {
+    de: 'Dienstleister',
+    en: 'Services',
+    text: 'Nähe zu Ihren Kunden.',
+    english: 'Closer to your clients.',
+    path: 'M3 21V7h18v14ZM8 7V3h8v4M8 12h2m4 0h2m-8 4h2m4 0h2',
+  },
+];
+---
+
+<BaseLayout {title} {description}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  <Hero />
+  <section class="hp-build section" id="leistungen" data-motion>
+    <div class="shell">
+      <div class="hp-build__head reveal">
+        <div>
+          <p class="section-kicker"><span>01 /</span><I18n de="Digitale Produkte" en="Digital products" /></p><h2
+            class="section-title"
+          >
+            <I18n de="Für Ihren Firmenalltag." en="For your working day." />
+            <em><I18n de="Bis ins Detail." en="Down to the detail." /></em>
+          </h2>
+        </div>
+        <p class="section-aside">
+          <I18n de="Einfach weiterscrollen. Oder selbst ausprobieren." en="Keep scrolling. Or try it yourself." />
+        </p>
+      </div>
+      <BuildSelector client:load />
+      <div class="hp-industries" id="branchen">
+        <div class="industry-row">
+          {
+            industries.map((item) => (
+              <article>
+                <>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d={item.path} />
+                  </svg>
+                  <div>
+                    <>
+                      <h3>
+                        <I18n de={item.de} en={item.en} />
+                      </h3>
+                      <p>
+                        <I18n de={item.text} en={item.english} />
+                      </p>
+                    </>
+                  </div>
+                </>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+      <p class="hp-places" id="standorte">
+        <span class="hp-places__label"><I18n de="Vor Ort" en="On site" /></span>
+        <span class="hp-places__text">
+          <I18n
+            de="Gütersloh, Bielefeld, Paderborn, Dortmund, Köln – und deutschlandweit."
+            en="Gütersloh, Bielefeld, Paderborn, Dortmund, Cologne – and Germany-wide."
+          />
+        </span>
+        <a class="hp-places__all" href="/webdesign/"
+          ><I18n de="Alle Standorte" en="All locations" /> <span aria-hidden="true">↗</span></a
+        >
+      </p>
+    </div>
+  </section>
+  <Engineering />
+  <Process />
+  <ContactCta />
+</BaseLayout>
